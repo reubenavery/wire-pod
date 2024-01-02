@@ -1,0 +1,17 @@
+apiVersion: skaffold/v4beta8
+kind: Config
+metadata:
+  name: wire-pod
+build:
+  artifacts:
+    - image: ravery/wire-pod
+      custom:
+        buildCommand:  docker buildx build --platform linux/amd64 --tag=$IMAGE --push .
+deploy:
+  helm:
+    releases:
+      - name: wire-pod
+        chartPath: charts/wire-pod
+        valuesFiles:
+          - charts/wire-pod/values.yaml
+        version: 1.2.0
