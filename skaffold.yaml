@@ -5,8 +5,9 @@ metadata:
 build:
   artifacts:
     - image: ravery/wire-pod
-      custom:
-        buildCommand:  docker buildx build --platform linux/amd64 --tag=$IMAGE --push .
+      #custom:
+      #  buildCommand:  docker buildx build --platform linux/amd64 --tag=$IMAGE --push .
+  local: {}
 deploy:
   helm:
     releases:
